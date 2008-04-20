@@ -1,12 +1,12 @@
-PureMVC Unit Tests Ported AS2 by James Knight
-PureMVC - Copyright(c) 2007-2008 Futurescale, Inc., Some rights reserved.
+ PureMVC AS2 Unit Tests Ported by James Knight <james.knight@puremvc.org> 
+ PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
 --------------------------------------------------------------------------
 Release Date: 4/19/08
     Platform: ActionScript 2 
      Version: 0 
-    Revision: 9
+    Revision: 5
       Author: James Knight <james.knight@puremvc.org>
      License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
 1.0 - 
-0.9 - Checked in initial folder structure and license - CLH
+0.5 - Checked in initial folder structure and license - CLH
