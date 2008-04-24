@@ -10,3 +10,4 @@ Release Date: 4/19/08
 --------------------------------------------------------------------------
 1.0 - 
 0.5 - Checked in initial folder structure and license - CLH
+0.6 - Unit tests imported with documentation - jamesk
