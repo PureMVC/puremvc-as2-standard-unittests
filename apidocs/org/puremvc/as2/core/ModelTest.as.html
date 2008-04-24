@@ -35,56 +35,56 @@ document.quicknavBasePath="../../../../index-files";
 <span class="lineno" id="32">    32  </span>		
 <span class="lineno" id="33">    33  </span>		<span class="key">var</span> model:IModel = Model.getInstance();
 <span class="lineno" id="34">    34  </span>		assertSame(<span class="str_const">"2 Model variable point to the same Model in memory"</span>, instance, model);
-<span class="lineno" id="35">    35  </span>	}
+<span class="lineno" id="35">    35  </span>	}	
 <span class="lineno" id="36">    36  </span>	
-<span class="lineno" id="37">    37  </span>	
-<span class="lineno" id="38">    38  </span>	<span class="comment doc">/**
-<span class="lineno" id="39">    39  </span>	 * Tests the proxy registration and retrieval methods.
-<span class="lineno" id="40">    40  </span>	 * 
-<span class="lineno" id="41">    41  </span>	 * Tests {@link registerProxy} and {@link retrieveProxy} in the same test.
-<span class="lineno" id="42">    42  </span>	 * 
-<span class="lineno" id="43">    43  </span>	 * These methods cannot currently be tested separately
-<span class="lineno" id="44">    44  </span>	 * in any meaningful way other than to show that the
-<span class="lineno" id="45">    45  </span>	 * methods do not throw exceptions when called.
-<span class="lineno" id="46">    46  </span>	 */</span>
-<span class="lineno" id="47">    47  </span>	<span class="key">public</span> <span class="key">function</span> testRegisterAndRetrieveProxy():Void{
-<span class="lineno" id="48">    48  </span>		
-<span class="lineno" id="49">    49  </span>		<span class="comment">// register a proxy and retrieve it.</span>
-<span class="lineno" id="50">    50  </span>		<span class="key">var</span> model:IModel = Model.getInstance();
-<span class="lineno" id="51">    51  </span>		model.registerProxy(<span class="key">new</span> Proxy(<span class="str_const">"colors"</span>, [<span class="str_const">"red"</span>, <span class="str_const">"green"</span>, <span class="str_const">"blue"</span>]));
-<span class="lineno" id="52">    52  </span>		<span class="key">var</span> proxy:Proxy = Proxy(model.retrieveProxy(<span class="str_const">"colors"</span>));
-<span class="lineno" id="53">    53  </span>		<span class="key">var</span> data = proxy.getData();
-<span class="lineno" id="54">    54  </span>		
-<span class="lineno" id="55">    55  </span>		<span class="comment">// test assertions</span>
-<span class="lineno" id="56">    56  </span>		assertNotNull( <span class="str_const">"Expecting data not null"</span>, data);
-<span class="lineno" id="57">    57  </span>		assertTrue( <span class="str_const">"Expecting data type is Array"</span>, data <span class="key">instanceof</span> Array);
-<span class="lineno" id="58">    58  </span>		assertTrue( <span class="str_const">"Expecting data.length == 3"</span>, data.length == <span class="num_const">3</span>);
-<span class="lineno" id="59">    59  </span>		assertTrue( <span class="str_const">"Expecting data[0] == 'red'"</span>, data[<span class="num_const">0</span>]  == <span class="str_const">"red"</span>);
-<span class="lineno" id="60">    60  </span>		assertTrue( <span class="str_const">"Expecting data[1] == 'green'"</span>, data[<span class="num_const">1</span>]  == <span class="str_const">"green"</span>);
-<span class="lineno" id="61">    61  </span>		assertTrue( <span class="str_const">"Expecting data[2] == 'blue'"</span>, data[<span class="num_const">2</span>]  == <span class="str_const">"blue"</span>);
-<span class="lineno" id="62">    62  </span>	}
-<span class="lineno" id="63">    63  </span>	
-<span class="lineno" id="64">    64  </span>	<span class="comment doc">/**
-<span class="lineno" id="65">    65  </span>	 * Tests the proxy removal method.
-<span class="lineno" id="66">    66  </span>	 */</span>
-<span class="lineno" id="67">    67  </span>	<span class="key">public</span> <span class="key">function</span> testRegisterAndRemoveProxy():Void{
-<span class="lineno" id="68">    68  </span>		
-<span class="lineno" id="69">    69  </span>		<span class="comment">// register a proxy, remove it, then try to retrieve it</span>
-<span class="lineno" id="70">    70  </span>		<span class="key">var</span> model:IModel = Model.getInstance();
-<span class="lineno" id="71">    71  </span>		<span class="key">var</span> proxy:IProxy = <span class="key">new</span> Proxy(<span class="str_const">"sizes"</span>, [<span class="str_const">"7"</span>, <span class="str_const">"13"</span>, <span class="str_const">"21"</span>]);
-<span class="lineno" id="72">    72  </span>		model.registerProxy(proxy);
-<span class="lineno" id="73">    73  </span>
-<span class="lineno" id="74">    74  </span>		<span class="comment">// remove the proxy</span>
-<span class="lineno" id="75">    75  </span>		<span class="key">var</span> removedProxy:IProxy = model.removeProxy(<span class="str_const">"sizes"</span>);
-<span class="lineno" id="76">    76  </span>		
-<span class="lineno" id="77">    77  </span>		<span class="comment">// assert that we removed the appropriate proxy</span>
-<span class="lineno" id="78">    78  </span>		assertTrue(<span class="str_const">"Expecting removedProxy.getProxyName() == 'sizes'"</span>, 
-<span class="lineno" id="79">    79  </span>					removedProxy.getProxyName() == <span class="str_const">"sizes"</span>);
-<span class="lineno" id="80">    80  </span>		
-<span class="lineno" id="81">    81  </span>		<span class="comment">// ensure that the proxy is no longer retrievable from the model</span>
-<span class="lineno" id="82">    82  </span>		proxy = model.retrieveProxy(<span class="str_const">"sizes"</span>);
-<span class="lineno" id="83">    83  </span>
-<span class="lineno" id="84">    84  </span>		<span class="comment">// test assertions</span>
+<span class="lineno" id="37">    37  </span>	<span class="comment doc">/**
+<span class="lineno" id="38">    38  </span>	 * Tests the proxy registration and retrieval methods.
+<span class="lineno" id="39">    39  </span>	 * 
+<span class="lineno" id="40">    40  </span>	 * Tests {@link Model#registerProxy} and {@link Model#retrieveProxy} in the same test.
+<span class="lineno" id="41">    41  </span>	 * 
+<span class="lineno" id="42">    42  </span>	 * These methods cannot currently be tested separately
+<span class="lineno" id="43">    43  </span>	 * in any meaningful way other than to show that the
+<span class="lineno" id="44">    44  </span>	 * methods do not throw exceptions when called.
+<span class="lineno" id="45">    45  </span>	 */</span>
+<span class="lineno" id="46">    46  </span>	<span class="key">public</span> <span class="key">function</span> testRegisterAndRetrieveProxy():Void{
+<span class="lineno" id="47">    47  </span>		
+<span class="lineno" id="48">    48  </span>		<span class="comment">// register a proxy and retrieve it.</span>
+<span class="lineno" id="49">    49  </span>		<span class="key">var</span> model:IModel = Model.getInstance();
+<span class="lineno" id="50">    50  </span>		model.registerProxy(<span class="key">new</span> Proxy(<span class="str_const">"colors"</span>, [<span class="str_const">"red"</span>, <span class="str_const">"green"</span>, <span class="str_const">"blue"</span>]));
+<span class="lineno" id="51">    51  </span>		<span class="key">var</span> proxy:Proxy = Proxy(model.retrieveProxy(<span class="str_const">"colors"</span>));
+<span class="lineno" id="52">    52  </span>		<span class="key">var</span> data = proxy.getData();
+<span class="lineno" id="53">    53  </span>		
+<span class="lineno" id="54">    54  </span>		<span class="comment">// test assertions</span>
+<span class="lineno" id="55">    55  </span>		assertNotNull( <span class="str_const">"Expecting data not null"</span>, data);
+<span class="lineno" id="56">    56  </span>		assertTrue( <span class="str_const">"Expecting data type is Array"</span>, data <span class="key">instanceof</span> Array);
+<span class="lineno" id="57">    57  </span>		assertEquals( <span class="str_const">"Expecting data.length == 3"</span>, <span class="num_const">3</span>, data.length);
+<span class="lineno" id="58">    58  </span>		assertEquals( <span class="str_const">"Expecting data[0] == 'red'"</span>, <span class="str_const">"red"</span>, data[<span class="num_const">0</span>]);
+<span class="lineno" id="59">    59  </span>		assertEquals( <span class="str_const">"Expecting data[1] == 'green'"</span>, <span class="str_const">"green"</span>, data[<span class="num_const">1</span>]);
+<span class="lineno" id="60">    60  </span>		assertEquals( <span class="str_const">"Expecting data[2] == 'blue'"</span>, <span class="str_const">"blue"</span>, data[<span class="num_const">2</span>]);
+<span class="lineno" id="61">    61  </span>	}
+<span class="lineno" id="62">    62  </span>	
+<span class="lineno" id="63">    63  </span>	<span class="comment doc">/**
+<span class="lineno" id="64">    64  </span>	 * Tests the proxy removal method.
+<span class="lineno" id="65">    65  </span>	 */</span>
+<span class="lineno" id="66">    66  </span>	<span class="key">public</span> <span class="key">function</span> testRegisterAndRemoveProxy():Void{
+<span class="lineno" id="67">    67  </span>		
+<span class="lineno" id="68">    68  </span>		<span class="comment">// register a proxy, remove it, then try to retrieve it</span>
+<span class="lineno" id="69">    69  </span>		<span class="key">var</span> model:IModel = Model.getInstance();
+<span class="lineno" id="70">    70  </span>		<span class="key">var</span> proxy:IProxy = <span class="key">new</span> Proxy(<span class="str_const">"sizes"</span>, [<span class="str_const">"7"</span>, <span class="str_const">"13"</span>, <span class="str_const">"21"</span>]);
+<span class="lineno" id="71">    71  </span>		model.registerProxy(proxy);
+<span class="lineno" id="72">    72  </span>
+<span class="lineno" id="73">    73  </span>		assertNotNull(<span class="str_const">"proxy is registered and retrievable"</span>, model.retrieveProxy(<span class="str_const">"sizes"</span>));
+<span class="lineno" id="74">    74  </span>
+<span class="lineno" id="75">    75  </span>		<span class="comment">// remove the proxy</span>
+<span class="lineno" id="76">    76  </span>		<span class="key">var</span> removedProxy:IProxy = model.removeProxy(<span class="str_const">"sizes"</span>);
+<span class="lineno" id="77">    77  </span>		
+<span class="lineno" id="78">    78  </span>		<span class="comment">// assert that we removed the appropriate proxy</span>
+<span class="lineno" id="79">    79  </span>		assertTrue(<span class="str_const">"Expecting removedProxy.getProxyName() == 'sizes'"</span>, 
+<span class="lineno" id="80">    80  </span>					removedProxy.getProxyName() == <span class="str_const">"sizes"</span>);
+<span class="lineno" id="81">    81  </span>		
+<span class="lineno" id="82">    82  </span>		<span class="comment">// ensure that the proxy is no longer retrievable from the model</span>
+<span class="lineno" id="83">    83  </span>		assertFalse(<span class="str_const">"model.hasProxy('sizes') == false"</span>, model.hasProxy(<span class="str_const">"sizes"</span>));
+<span class="lineno" id="84">    84  </span>		proxy = model.retrieveProxy(<span class="str_const">"sizes"</span>);
 <span class="lineno" id="85">    85  </span>		assertNull( <span class="str_const">"Expecting proxy is null"</span>, proxy );
 <span class="lineno" id="86">    86  </span>	}
 <span class="lineno" id="87">    87  </span>	
