@@ -14,7 +14,8 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 	private var className:String = "org.puremvc.as2.core.ControllerTest";
 
 	/**
-	 * Tests the Controller Singleton Factory Method 
+	 * Tests the Controller Singleton Factory Method, ensuring
+	 * that all instantiated controller variables point to the same single Controller 
 	 */
 	public function testGetInstance():Void {
 		
@@ -22,25 +23,23 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 		var controller:IController = Controller.getInstance();
 		
 		// test assertions
-		assertTrue( "Expecting instance not null", controller != null );
+		assertNotNull( "Expecting instance not null", controller);
 		assertTrue( "Expecting instance implements IController", controller instanceof IController);
 		
 		var secondController:IController = Controller.getInstance();
-		assertSame("two controller variable should point to the same object", controller, secondController);
+		assertSame("two controller variables should point to the same object", controller, secondController);
 	}
 
 	/**
 	 * Tests Command registration and execution.
 	 * 
-	 * This test gets the Singleton Controller instance 
-	 * and registers the MockCommand class 
-	 * to handle 'ControllerTest' Notifications.<P>
+	 * This registers a MockCommand object with a Controller instance 
+	 * to handle 'ControllerTest' Notifications.
 	 * 
-	 * It then constructs such a Notification and tells the 
-	 * Controller to execute the associated Command.
-	 * Success is determined by evaluating a property
-	 * on an object passed to the Command, which will
-	 * be modified when the Command executes.</P>
+	 * It then constructs such a Notification and tells the Controller 
+	 * to execute the associated Command. Success is determined by 
+	 * evaluating a property on an object passed to the Command, which 
+	 * will be modified when the Command executes.
 	 * 
 	 */
 	public function testRegisterAndExecuteCommand():Void {
@@ -54,20 +53,18 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 		var note:Notification = new Notification( 'ControllerTest', vo );
 
 		// Tell the controller to execute the Command associated with the note
-		// the ControllerTestCommand invoked will multiply the vo.input value
-		// by 2 and set the result on vo.result
+		// which will multiply the vo.input value by 2 and store the result in vo.result
 		controller.executeCommand(note);
 		
 		// test assertions 
-		assertTrue( "Expecting vo.result == 24", vo.result == 24 );
+		assertEquals( "Expecting vo.result == 24", 24, vo.result );
 	}
 	
 	/**
 	 * Tests Command registration and removal.
 	 * 
-	 * <P>
 	 * Tests that once a Command is registered and verified
-	 * working, it can be removed from the Controller.</P>
+	 * working, it can be removed from the Controller.
 	 */
 	public function testRegisterAndRemoveCommand():Void {
 		
@@ -80,12 +77,11 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 		var note:Notification = new Notification( 'ControllerRemoveTest', vo );
 
 		// Tell the controller to execute the Command associated with the note
-		// the ControllerTestCommand invoked will multiply the vo.input value
-		// by 2 and set the result on vo.result
+		// which will multiply the vo.input value by 2 and set the result on vo.result
 		controller.executeCommand(note);
 		
 		// test assertions 
-		assertTrue( "Expecting vo.result == 24", vo.result == 24 );
+		assertEquals( "Expecting vo.result == 24", 24, vo.result );
 		
 		// Reset result
 		vo.result = 0;
@@ -99,7 +95,7 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 		controller.executeCommand(note);
 		
 		// test assertions 
-		assertTrue( "Expecting vo.result == 0", vo.result == 0 );
+		assertEquals( "Expecting vo.result == 24", 0, vo.result );
 	}
   		
 	/**
@@ -107,18 +103,21 @@ class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase 
 	 */
 	public function testHasCommand():Void {
 		
+		// test that hasCommand returns true for hasCommandTest notifications 
+		assertFalse( "Before registering Command, expecting controller.hasCommand('hasCommandTest') == false", controller.hasCommand('hasCommandTest'));
+		
 		// register the MockCommand to handle 'hasCommandTest' notes
 		var controller:IController = Controller.getInstance();
 		controller.registerCommand('hasCommandTest', MockSimpleCommand);
 		
 		// test that hasCommand returns true for hasCommandTest notifications 
-		assertTrue( "Expecting controller.hasCommand('hasCommandTest') == true", controller.hasCommand('hasCommandTest') == true );
+		assertTrue( "Expecting controller.hasCommand('hasCommandTest') == true", controller.hasCommand('hasCommandTest'));
 		
 		// Remove the Command from the Controller
 		controller.removeCommand('hasCommandTest');
 		
 		// test that hasCommand returns false for hasCommandTest notifications 
-		assertTrue( "Expecting controller.hasCommand('hasCommandTest') == false", controller.hasCommand('hasCommandTest') == false );
+		assertFalse( "Expecting controller.hasCommand('hasCommandTest') == false", controller.hasCommand('hasCommandTest'));
 	}
 	
 }

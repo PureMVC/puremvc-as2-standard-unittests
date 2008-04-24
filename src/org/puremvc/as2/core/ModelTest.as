@@ -32,13 +32,12 @@ class org.puremvc.as2.core.ModelTest extends com.asunit.framework.TestCase {
 		
 		var model:IModel = Model.getInstance();
 		assertSame("2 Model variable point to the same Model in memory", instance, model);
-	}
-	
+	}	
 	
 	/**
 	 * Tests the proxy registration and retrieval methods.
 	 * 
-	 * Tests {@link registerProxy} and {@link retrieveProxy} in the same test.
+	 * Tests {@link Model#registerProxy} and {@link Model#retrieveProxy} in the same test.
 	 * 
 	 * These methods cannot currently be tested separately
 	 * in any meaningful way other than to show that the
@@ -55,10 +54,10 @@ class org.puremvc.as2.core.ModelTest extends com.asunit.framework.TestCase {
 		// test assertions
 		assertNotNull( "Expecting data not null", data);
 		assertTrue( "Expecting data type is Array", data instanceof Array);
-		assertTrue( "Expecting data.length == 3", data.length == 3);
-		assertTrue( "Expecting data[0] == 'red'", data[0]  == 'red');
-		assertTrue( "Expecting data[1] == 'green'", data[1]  == 'green');
-		assertTrue( "Expecting data[2] == 'blue'", data[2]  == 'blue');
+		assertEquals( "Expecting data.length == 3", 3, data.length);
+		assertEquals( "Expecting data[0] == 'red'", 'red', data[0]);
+		assertEquals( "Expecting data[1] == 'green'", 'green', data[1]);
+		assertEquals( "Expecting data[2] == 'blue'", 'blue', data[2]);
 	}
 	
 	/**
@@ -71,6 +70,8 @@ class org.puremvc.as2.core.ModelTest extends com.asunit.framework.TestCase {
 		var proxy:IProxy = new Proxy('sizes', ['7', '13', '21']);
 		model.registerProxy(proxy);
 
+		assertNotNull("proxy is registered and retrievable", model.retrieveProxy('sizes'));
+
 		// remove the proxy
 		var removedProxy:IProxy = model.removeProxy('sizes');
 		
@@ -79,9 +80,8 @@ class org.puremvc.as2.core.ModelTest extends com.asunit.framework.TestCase {
 					removedProxy.getProxyName() == 'sizes');
 		
 		// ensure that the proxy is no longer retrievable from the model
+		assertFalse("model.hasProxy('sizes') == false", model.hasProxy('sizes'));
 		proxy = model.retrieveProxy('sizes');
-
-		// test assertions
 		assertNull( "Expecting proxy is null", proxy );
 	}
 	
