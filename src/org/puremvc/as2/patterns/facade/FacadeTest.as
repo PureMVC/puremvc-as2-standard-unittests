@@ -10,11 +10,15 @@ import org.puremvc.as2.patterns.mediator.Mediator;
 import org.puremvc.as2.patterns.proxy.MockVO;
 import org.puremvc.as2.patterns.proxy.Proxy;
 
-class org.puremvc.as2.patterns.facade.FacadeTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.facade.FacadeTest extends asunit.framework.TestCase {
 	
 	private var className:String = "org.puremvc.as2.patterns.facade.FacadeTest";
 
 	
+	public function FacadeTest(testMethod:String) {
+		super(testMethod);
+	}
+
 	/**
 	 * Tests the Facade Singleton Factory Method 
 	 */
@@ -31,16 +35,14 @@ class org.puremvc.as2.patterns.facade.FacadeTest extends com.asunit.framework.Te
 	/**
 	 * Tests Command registration and execution via the Facade.
 	 * 
-	 * <P>
 	 * This test gets the Singleton Facade instance 
 	 * and registers the FacadeTestCommand class 
-	 * to handle 'FacadeTest' Notifcations.<P>
+	 * to handle 'FacadeTest' Notifcations.
 	 * 
-	 * <P>
 	 * It then sends a notification using the Facade. 
 	 * Success is determined by evaluating 
 	 * a property on an object placed in the body of
-	 * the Notification, which will be modified by the Command.</P>
+	 * the Notification, which will be modified by the Command.
 	 * 
 	 */
 	public function testRegisterCommandAndSendNotification():Void {
@@ -62,16 +64,14 @@ class org.puremvc.as2.patterns.facade.FacadeTest extends com.asunit.framework.Te
 	/**
 	 * Tests Command removal via the Facade.
 	 * 
-	 * <P>
 	 * This test gets the Singleton Facade instance 
 	 * and registers the FacadeTestCommand class 
-	 * to handle 'FacadeTest' Notifcations. Then it removes the command.<P>
+	 * to handle 'FacadeTest' Notifcations. Then it removes the command.
 	 * 
-	 * <P>
 	 * It then sends a Notification using the Facade. 
 	 * Success is determined by evaluating 
 	 * a property on an object placed in the body of
-	 * the Notification, which will NOT be modified by the Command.</P>
+	 * the Notification, which will NOT be modified by the Command.
 	 * 
 	 */
 	public function testRegisterAndRemoveCommandAndSendNotification():Void {
@@ -96,11 +96,10 @@ class org.puremvc.as2.patterns.facade.FacadeTest extends com.asunit.framework.Te
 	/**
 	 * Tests the regsitering and retrieving Model proxies via the Facade.
 	 * 
-	 * <P>
-	 * Tests <code>registerProxy</code> and <code>retrieveProxy</code> in the same test.
+	 * Tests {@code registerProxy} and {@code retrieveProxy} in the same test.
 	 * These methods cannot currently be tested separately
 	 * in any meaningful way other than to show that the
-	 * methods do not throw exception when called. </P>
+	 * methods do not throw exception when called.
 	 */
 	public function testRegisterAndRetrieveProxy():Void {
 		

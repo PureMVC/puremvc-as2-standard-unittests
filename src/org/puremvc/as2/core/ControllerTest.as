@@ -9,9 +9,13 @@ import org.puremvc.as2.patterns.command.MockSimpleCommand;
 import org.puremvc.as2.patterns.observer.Notification;
 import org.puremvc.as2.patterns.proxy.MockVO;
 
-class org.puremvc.as2.core.ControllerTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.core.ControllerTest extends asunit.framework.TestCase {
 
 	private var className:String = "org.puremvc.as2.core.ControllerTest";
+	
+	public function ControllerTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	/**
 	 * Tests the Controller Singleton Factory Method, ensuring

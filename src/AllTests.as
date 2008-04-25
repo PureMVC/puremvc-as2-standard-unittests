@@ -4,7 +4,7 @@
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
 
-class AllTests extends com.asunit.framework.TestSuite {
+class AllTests extends asunit.framework.TestSuite {
 
 	private var className:String = "AllTests";
 

@@ -1,13 +1,13 @@
-﻿/* 
+/* 
  PureMVC AS2 Unit Tests Ported by James Knight <james.knight@puremvc.org>  
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
-
+import org.puremvc.as2.core.ViewTest;
 import org.puremvc.as2.interfaces.IMediator;
 import org.puremvc.as2.interfaces.INotification;
 import org.puremvc.as2.patterns.mediator.Mediator;
-import org.puremvc.as2.core.ViewTest;	
+
 /**
  * A {@link Mediator} used by {@link ViewTest}.
  * 

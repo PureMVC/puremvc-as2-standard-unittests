@@ -3,16 +3,19 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
-
 import org.puremvc.as2.interfaces.*;
 import org.puremvc.as2.patterns.observer.Notification;
 
-class org.puremvc.as2.patterns.observer.NotificationTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.observer.NotificationTest extends asunit.framework.TestCase {
 	
 	private var className:String = "org.puremvc.as2.patterns.observer.NotificationTest";
 	private var instance:Notification;
 
 	
+	public function NotificationTest(testMethod:String) {
+		super(testMethod);
+	}
+
 	/**
 	 * Tests setting and getting the name using Notification class accessor methods.
 	 */

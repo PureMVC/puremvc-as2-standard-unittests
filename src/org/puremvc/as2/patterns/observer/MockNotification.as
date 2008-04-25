@@ -1,11 +1,10 @@
-﻿/* 
+/* 
  PureMVC AS2 Unit Tests Ported by James Knight <james.knight@puremvc.org>  
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
-
-import org.puremvc.as2.patterns.observer.*;
 import org.puremvc.as2.interfaces.*;
+import org.puremvc.as2.patterns.observer.*;
 
 class org.puremvc.as2.patterns.observer.MockNotification extends Notification implements INotification {
 	
@@ -27,10 +26,9 @@ class org.puremvc.as2.patterns.observer.MockNotification extends Notification im
 	/**
 	* Factory method.
 	* 
-	* <P> 
 	* This method creates new instances of the ViewTestNote class,
 	* automatically setting the note name so you don't have to. Use
-	* this as an alternative to the constructor.</P>
+	* this as an alternative to the constructor.
 	* 
 	* @param name the name of the Notification to be constructed.
 	* @param body the body of the Notification to be constructed.

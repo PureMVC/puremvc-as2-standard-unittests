@@ -8,10 +8,14 @@ import org.puremvc.as2.patterns.command.SimpleCommand;
 import org.puremvc.as2.patterns.observer.*;
 import org.puremvc.as2.patterns.proxy.MockVO;
 
-class org.puremvc.as2.patterns.command.SimpleCommandTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.command.SimpleCommandTest extends asunit.framework.TestCase {
 
 	private var className:String = "org.puremvc.as2.patterns.command.SimpleCommandTest";
 	private var instance:SimpleCommand;
+
+	public function SimpleCommandTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = new SimpleCommand();

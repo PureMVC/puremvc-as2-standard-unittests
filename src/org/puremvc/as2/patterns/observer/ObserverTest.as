@@ -3,14 +3,17 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
-
 import org.puremvc.as2.interfaces.*;
 import org.puremvc.as2.patterns.observer.*;
 
-class org.puremvc.as2.patterns.observer.ObserverTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.observer.ObserverTest extends asunit.framework.TestCase {
 
 	private var className:String = "org.puremvc.as2.patterns.observer.ObserverTest";
 	private var instance:Observer;
+
+	public function ObserverTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = new Observer();

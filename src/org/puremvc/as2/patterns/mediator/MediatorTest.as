@@ -8,10 +8,14 @@ import org.puremvc.as2.patterns.facade.Facade;
 import org.puremvc.as2.patterns.mediator.Mediator;
 import org.puremvc.as2.patterns.mediator.MockMediator;
 
-class org.puremvc.as2.patterns.mediator.MediatorTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.mediator.MediatorTest extends asunit.framework.TestCase {
 	
 	private var className:String = "org.puremvc.as2.patterns.mediator.MediatorTest";
 	private var instance:Mediator;
+
+	public function MediatorTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = new Mediator();

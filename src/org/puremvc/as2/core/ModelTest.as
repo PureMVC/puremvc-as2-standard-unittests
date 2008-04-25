@@ -9,10 +9,14 @@ import org.puremvc.as2.interfaces.IProxy;
 import org.puremvc.as2.patterns.proxy.MockProxy;
 import org.puremvc.as2.patterns.proxy.Proxy;
 
-class org.puremvc.as2.core.ModelTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.core.ModelTest extends asunit.framework.TestCase {
 
 	private var className:String = "org.puremvc.as2.core.ModelTest";
 	private var instance:IModel;
+
+	public function ModelTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = Model.getInstance();

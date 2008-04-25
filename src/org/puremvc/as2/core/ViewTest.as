@@ -13,7 +13,7 @@ import org.puremvc.as2.patterns.observer.MockNotification;
 import org.puremvc.as2.patterns.observer.Notification;
 import org.puremvc.as2.patterns.observer.Observer;
 
-class org.puremvc.as2.core.ViewTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.core.ViewTest extends asunit.framework.TestCase {
 
 	private var className:String = "org.puremvc.as2.core.ViewTest";
 
@@ -24,6 +24,10 @@ class org.puremvc.as2.core.ViewTest extends com.asunit.framework.TestCase {
 	public static var NOTE1:String = "Notification1";
 	public static var NOTE2:String = "Notification2";
 	public static var NOTE3:String = "Notification3";
+	
+	public function ViewTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		onRegisterCalled = false;

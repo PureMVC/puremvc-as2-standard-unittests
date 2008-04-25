@@ -3,13 +3,16 @@
  PureMVC - Copyright(c) 2006, 2007 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
-
 import org.puremvc.as2.patterns.proxy.Proxy;
 
-class org.puremvc.as2.patterns.proxy.ProxyTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.proxy.ProxyTest extends asunit.framework.TestCase {
 	
 	private var className:String = "org.puremvc.as2.patterns.proxy.ProxyTest";
 	private var instance:Proxy;
+
+	public function ProxyTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = new Proxy();

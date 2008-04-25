@@ -9,10 +9,14 @@ import org.puremvc.as2.patterns.command.MockMacroCommand;
 import org.puremvc.as2.patterns.observer.Notification;
 import org.puremvc.as2.patterns.proxy.MockVO;
 
-class org.puremvc.as2.patterns.command.MacroCommandTest extends com.asunit.framework.TestCase {
+class org.puremvc.as2.patterns.command.MacroCommandTest extends asunit.framework.TestCase {
 	
 	private var className:String = "org.puremvc.as2.patterns.command.MacroCommandTest";
 	private var instance:MacroCommand;
+
+	public function MacroCommandTest(testMethod:String) {
+		super(testMethod);
+	}
 
 	public function setUp():Void {
 		instance = new MacroCommand();
@@ -27,35 +31,30 @@ class org.puremvc.as2.patterns.command.MacroCommandTest extends com.asunit.frame
 	}
 	
 /**
- * Tests operation of a <code>MacroCommand</code>.
+ * Tests operation of a {@code MacroCommand}.
 	 * 
-	 * <P>
-	 * This test creates a new <code>Notification</code>, adding a 
-	 * <code>MacroCommandTestVO</code> as the body. 
-	 * It then creates a <code>MockMacroCommand</code> and invokes
-	 * its <code>execute</code> method, passing in the 
-	 * <code>Notification</code>.<P>
+	 * This test creates a new {@link Notification}, adding a 
+	 * {@link MacroCommandTestVO} as the body. 
+	 * It then creates a {@link MockMacroCommand} and invokes
+	 * its {@link #execute} method, passing in the 
+	 * {@link Notification}.
 	 * 
-	 * <P>
-	 * The <code>MockMacroCommand</code> has defined an
-	 * <code>initializeMacroCommand</code> method, which is 
+	 * The {@code MockMacroCommand} has defined an
+	 * {@link MockMacroCommand#initializeMacroCommand} method, which is 
 	 * called automatically by its constructor. In this method
-	 * the <code>MockMacroCommand</code> adds 2 SubCommands
-	 * to itself, <code>MacroCommandTestSub1Command</code> and
-	 * <code>MacroCommandTestSub2Command</code>.
+	 * the {@code MockMacroCommand} adds 2 {@link MockSimpleCommand} objects
+	 * to itself.
 	 * 
-	 * <P>
-	 * The <code>MacroCommandTestVO</code> has 2 result properties,
-	 * one is set by <code>MacroCommandTestSub1Command</code> by
-	 * multiplying the input property by 2, and the other is set
-	 * by <code>MacroCommandTestSub2Command</code> by multiplying
+	 * The {@code MacroCommandTestVO} has 2 result properties,
+	 * one is set by one {@code MockSimpleCommand} multiplying 
+	 * the input property by 2, and the other is set
+	 * by the other {@code MockSimpleCommand} multiplying
 	 * the input property by itself. 
 	 * 
-	 * <P>
 	 * Success is determined by evaluating the 2 result properties
-	 * on the <code>MacroCommandTestVO</code> that was passed to 
-	 * the <code>MockMacroCommand</code> on the Notification 
-	 * body.</P>
+	 * on the {@code MacroCommandTestVO} that was passed to 
+	 * the {@code MockMacroCommand} on the Notification 
+	 * body.
 	 * 
 	 */
 	public function testMacroCommandExecute():Void {
