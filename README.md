@@ -19,9 +19,9 @@ Tested are ...
 * All classes, all methods, and generally multiple assertions per test. 
 
 ## License
-* PureMVC AS2 Unit Tests Ported by James Knight <james.knight@puremvc.org> 
-* PureMVC - Copyright(c) 2007-2008 Futurescale, Inc.
-All rights reserved.
+* PureMVC AS2 Unit Tests (Ported) - Copyright © 2008 James Knight
+* PureMVC - Copyright © 2007-2008 Futurescale, Inc.
+* All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
